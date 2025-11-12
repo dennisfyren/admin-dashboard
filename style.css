@@ -1,11 +1,30 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   list-style: none;
+}
+:root {
+  --main-content-background-color: rgb(21, 1, 39); 
+  --main-grid-color: rgb(54, 54, 54);
+  --main-dark-color: rgb(24, 24, 24);
+  --main-dark-color-light: rgb(31, 30, 30);
+  --main-light-color: rgb(155, 155, 155);
+}
+body {
+  background:var(--main-content-background-color);
+  height: 100vh;
+  width: 100vw;
+}
+p:hover, li:hover {
+  cursor: pointer;
 }
 .main-content {
   display: grid;
-  grid-template: 1fr / 1fr 4fr;
+  grid-template: 1fr 30px / 1fr 4fr;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: 100%;
 }
 .sidebar {
   grid-area: 1/1/2/2;
@@ -13,12 +32,20 @@
   grid-template-columns: 1fr;
   grid-template-rows: 50px 1fr 1fr;
   grid-row-gap: 15px;
+  background: var(--main-dark-color-light);
+  box-shadow: 0px 5px var(--main-dark-color);
+  justify-items: start;
+  align-items: center;
+  padding-left: 15px;
 }
 .logo {
   grid-area: 1/1/2/2;
 }
 .tabs {
   grid-area: 2/1/3/2;
+}
+.tabs ul > li, .settings ul > li {
+  padding-top: 10px;
 }
 .settings {
   grid-area: 3/1/4/2;
@@ -27,19 +54,138 @@
   grid-area: 1/2/2/3;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 50px 25px 1fr;
+  grid-template-rows: 50px 40px 1fr;
 }
 .header {
   grid-area: 1/1/2/2;
   display: grid;
+  grid-template: 5fr 1fr 1fr / 1fr;
   grid-auto-flow: column;
+  grid-column-gap: 15px;
+  background-color: var(--main-dark-color);
+  align-items: end;
+}
+.search-bar input{
+  grid-area: 1/1/2/2;
+  margin-left: 15px;
+  background-color: var(--main-grid-color);
+  border: 0px;
+  border-radius: 2rem;
+  height: 25px;
+  width: 75%;
+  padding-left: 10%;
+  color: white;
+}
+.search-bar input:focus {
+  background-color: white;
+  color: black;
+}
+.notifications {
+  grid-area: 1/2/2/3;
+}
+.profile {
+  grid-area: 1/3/2/4;
 }
 .menu {
   grid-area: 2/1/3/2;
+  display: grid;
+  grid-template: 1fr / 2fr 5fr;
+  grid-auto-flow: column;
+  padding-left: 15px;
+  padding-top: 10px;
+  background-color: var(--main-grid-color)
 }
 .menu-buttons {
   display: grid;
+  grid-auto-flow: column;
+  justify-content: end;
+  gap: 15px;
+}
+.menu-buttons > p:last-of-type {
+  margin-right: 15px;
 }
 .article {
+  margin-top: 20px;
   grid-area: 3/1/4/2;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 3fr 1fr;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.article-1 {
+  grid-area: 1/1/2/2;
+  display: grid;
+  grid-template: 25px 1fr / 1fr;
+  overflow: scroll;
+}
+.article-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  grid-template-rows: 170px;
+  grid-auto-rows: 170px;
+  grid-gap: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.article-content > * {
+  background-color: var(--main-grid-color);
+  border-radius: 0.5rem;
+  text-align: center;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 20px;
+  transition: all 0.2s;
+}
+.article-content > *:hover{
+  height: 110%;
+  width: 110%;
+  z-index: 10;
+  background-color: var(--main-light-color);
+  border: 3px solid var(--main-light-color);
+  color: black;
+  font-size: 110%;
+  box-shadow: 10px 10px rgba(27, 27, 27, 0.137);
+}
+.article-2 {
+  grid-area: 1/2/2/3;
+  display: grid;
+  justify-content: end;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.news {
+  grid-area: 1/1/2/2;
+}
+.trending {
+  grid-area: 2/1/3/2;
+}
+.news, .trending {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 25px 1fr;
+}
+.news-content, .trending-content {
+  display: grid;
+  grid-template-rows: 150px;
+  grid-template-columns: minmax(160px, 1fr);
+  grid-gap: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  overflow-y: auto;
+}
+.news-content > p, .trending-content > p {
+  background-color: rgb(54, 54, 54);
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  overflow: auto;
+}
+.footer {
+  grid-area: 2/1/3/3;
+  background-color: rgb(24, 24, 24);
 }
