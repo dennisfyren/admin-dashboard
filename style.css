@@ -19,6 +19,9 @@ body {
 p:hover, li:hover {
   cursor: pointer;
 }
+img {
+  cursor: pointer;
+}
 .main-content {
   display: grid;
   grid-template: 1fr 30px / 1fr 4fr;
@@ -40,6 +43,17 @@ p:hover, li:hover {
 }
 .logo {
   grid-area: 1/1/2/2;
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 2rem;
+  width: 2rem;
+  margin-right: 4px;
+}
+.logo > p:first-of-type {
+  font-weight: 700;
+  font-size: 1.3rem;
 }
 .tabs {
   grid-area: 2/1/3/2;
@@ -47,8 +61,39 @@ p:hover, li:hover {
 .tabs ul > li, .settings ul > li {
   padding-top: 10px;
 }
+.tabs ul div img, .settings ul div img, .notifications img, .profile img {
+  height: 2rem;
+  width: 3.2rem;
+  margin-right: 0.3rem;
+  background: var(--main-light-color);
+  padding: 0.1rem;
+  border-radius: 0.3rem;
+}
+.notifications img {
+  background: none;
+}
+.notifications {
+  background: var(--main-light-color);
+  padding-right: 2rem;
+  color: black;
+  font-weight: 700;
+  border-radius: 0.7rem;
+}
+.tabs ul > div, .settings ul div, .notifications, .profile {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
 .settings {
   grid-area: 3/1/4/2;
+}
+.profile img {
+  background: none;
+}
+.profile {
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding-right: 2rem;
 }
 .content {
   grid-area: 1/2/2/3;
@@ -136,16 +181,12 @@ p:hover, li:hover {
   padding-right: 15px;
   padding-left: 15px;
   padding-top: 20px;
-  transition: all 0.2s;
 }
 .article-content > *:hover{
-  height: 110%;
-  width: 110%;
   z-index: 10;
   background-color: var(--main-light-color);
   border: 3px solid var(--main-light-color);
   color: black;
-  font-size: 110%;
   box-shadow: 10px 10px rgba(27, 27, 27, 0.137);
 }
 .article-2 {
